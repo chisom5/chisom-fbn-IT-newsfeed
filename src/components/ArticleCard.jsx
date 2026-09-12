@@ -26,7 +26,7 @@ export function ArticleCard({ article }) {
   };
 
   return (
-    <Card className="flex flex-col h-auto">
+    <Card className="flex flex-col h-auto shadow-card">
       <CardHeader className="px-4 sm:px-6">
         <CardTitle className="text-lg sm:text-xl font-normal text-black">
           {truncateText(article?.title, 40)}

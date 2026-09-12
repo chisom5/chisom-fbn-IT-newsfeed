@@ -8,6 +8,7 @@ export default {
       },
       boxShadow: {
         soft: "0 10px 30px rgba(15, 23, 42, 0.08)",
+        card: "0 4px 4px 0 rgba(165, 165, 165, 0.15)",
       },
       colors: {
         brand: {
