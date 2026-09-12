@@ -3,7 +3,7 @@ import {sanitizeQueryParams} from '../utils/sanitizeParams';
 
 export const getTopHeadlines = async (country, pageSize, page) => {
   const cleanParams = sanitizeQueryParams({ country, pageSize, page });
-  
+
   try {
     const response = await axiosInstance.get("/top-headlines", {
       params: cleanParams,
