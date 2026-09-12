@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.PROD ? "/api" : "https://newsapi.org/v2";
+const baseURL = import.meta.env.PROD
+  ? "https://corsproxy.io/?https://newsapi.org/v2"
+  : "/api";
 
 const axiosInstance = axios.create({
   baseURL,
@@ -8,12 +10,10 @@ const axiosInstance = axios.create({
 });
 
 axiosInstance.interceptors.request.use((config) => {
-  if (!import.meta.env.PROD) {
-    config.params = {
-      ...config.params,
-      apiKey: import.meta.env.VITE_NEWS_API_KEY,
-    };
-  }
+  config.params = {
+    ...config.params,
+    apiKey: import.meta.env.VITE_NEWS_API_KEY,
+  };
   return config;
 });
 

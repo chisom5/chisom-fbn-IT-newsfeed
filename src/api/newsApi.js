@@ -1,20 +1,12 @@
-import { toast } from "sonner";
 import axiosInstance from "./axiosInstance";
-import { sanitizeQueryParams } from "../utils/sanitizeParams";
+import {sanitizeQueryParams} from '../utils/sanitizeParams';
 
 export const getTopHeadlines = async (country, pageSize, page) => {
   const cleanParams = sanitizeQueryParams({ country, pageSize, page });
-
-  const endpoint = import.meta.env.PROD ? "/news" : "/top-headlines";
-
+  
   try {
-    const response = await axiosInstance.get(endpoint, {
-      params: import.meta.env.PROD
-        ? cleanParams
-        : {
-            ...cleanParams,
-            apiKey: import.meta.env.VITE_NEWS_API_KEY,
-          },
+    const response = await axiosInstance.get("/top-headlines", {
+      params: cleanParams,
     });
 
     const articles = response?.data?.articles || [];
@@ -34,3 +26,4 @@ export const getTopHeadlines = async (country, pageSize, page) => {
     throw new Error(apiErrorMessage);
   }
 };
+
