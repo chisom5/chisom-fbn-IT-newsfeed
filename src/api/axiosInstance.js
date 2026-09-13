@@ -1,11 +1,7 @@
 import axios from "axios";
 
-const baseURL = import.meta.env.PROD
-  ? "https://thingproxy.freeboard.io/fetch/https://newsapi.org/v2"
-  : "/api";
-
 const axiosInstance = axios.create({
-  baseURL,
+  baseURL: "https://newsapi.org/v2",
   timeout: 15000,
 });
 
